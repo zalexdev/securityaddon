@@ -44,6 +44,7 @@ With this you can run app from taskers, smart watches, voice commands and other!
 Issue is welcome! Leave here bugs, wishes, improvements and ideas!
 * Not crypting files in multifolder (like folder in folder)
 * Some UI bugs with small screens
+* After boot you need start app manually 
 ## Contributing
 If you make addon for my app, integration or modifying:
 * Leave link to this [github page](https://github.com/huntmix/securityaddon) 
