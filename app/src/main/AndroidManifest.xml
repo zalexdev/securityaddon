@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.huntmix.secbutton">
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission
+        android:name="android.permission.BROADCAST_SMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <application
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SecurityAddon">
+        <activity android:name="com.huntmix.secbutton.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huntmix.secbutton.SelectApps"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.huntmix.secbutton.SettingsActivity"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.huntmix.secbutton.Deleter"
+            android:exported="true"
+            android:label="Delete Apps" />
+        <activity
+            android:name="com.huntmix.secbutton.Decrypter"
+            android:label="Delete Apps" />        <activity
+            android:name="com.huntmix.secbutton.About"
+            android:label="Delete Apps" />
+        <service
+            android:name="com.huntmix.secbutton.Backgroundstarter"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.huntmix.secbutton.Backgrounddecrypt"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver android:name="com.huntmix.secbutton.SmsListener">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

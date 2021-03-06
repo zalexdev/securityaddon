@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--?xml version="1.0" encoding="iso-8859-1"?-->
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_3" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve" width="64" height="64">
+<g>
+	<g>
+		<rect x="27" y="5" style="fill: rgb(101, 123, 136);" width="2" height="16" class="svg-elem-1"></rect>
+        <path style="fill: rgb(101, 123, 136);" d="M44.352,11.937C44.741,11.79,45,11.417,45,11V5h-2v5.307l-6,2.25V9h-2v12h2v-6.307L44.352,11.937z" class="svg-elem-2"></path>
+        <rect x="39" y="27" style="fill: rgb(101, 123, 136);" width="20" height="2" class="svg-elem-3"></rect>
+        <path style="fill: rgb(101, 123, 136);" d="M55,19c-0.266,0-0.52,0.105-0.707,0.293L50.586,23H38v2h13c0.266,0,0.52-0.105,0.707-0.293    L55.414,21H59v-2H55z" class="svg-elem-4"></path>
+        <path style="fill: rgb(101, 123, 136);" d="M51.443,37H55v-2H41v2h8.307l2.757,7.351C52.21,44.741,52.583,45,53,45h6v-2h-5.307L51.443,37z" class="svg-elem-5"></path>
+        <rect x="35" y="44" style="fill: rgb(101, 123, 136);" width="2" height="15" class="svg-elem-6"></rect>
+        <path style="fill: rgb(101, 123, 136);" d="M41,50.586V44h-2v7c0,0.265,0.105,0.52,0.293,0.707L43,55.414V59h2v-4    c0-0.265-0.105-0.52-0.293-0.707L41,50.586z" class="svg-elem-7"></path>
+        <path style="fill: rgb(101, 123, 136);" d="M27,49.307l-7.352,2.757C19.259,52.21,19,52.583,19,53v6h2v-5.307l6-2.25V55h2V44h-2V49.307z" class="svg-elem-8"></path>
+        <rect x="5" y="35" style="fill: rgb(101, 123, 136);" width="18" height="2" class="svg-elem-9"></rect>
+        <path style="fill: rgb(101, 123, 136);" d="M23,39H13c-0.266,0-0.52,0.105-0.707,0.293L8.586,43H5v2h4c0.266,0,0.52-0.105,0.707-0.293    L13.414,41H23V39z" class="svg-elem-10"></path>
+        <path style="fill: rgb(101, 123, 136);" d="M12.557,27H9v2h16v-1v-1V13c0-0.265-0.105-0.52-0.293-0.707L21,8.586V5h-2v4    c0,0.265,0.105,0.52,0.293,0.707L23,13.414V27h-8.307l-2.757-7.351C11.79,19.259,11.417,19,11,19H5v2h5.307L12.557,27z" class="svg-elem-11"></path>
+	</g>
+    <rect x="22" y="33" style="fill: rgb(157, 137, 128);" width="20" height="12" class="svg-elem-12"></rect>
+    <path style="fill: rgb(185, 171, 165);" d="M36,34.5c0-0.511-0.049-1.009-0.119-1.5H22v11.39c1.096,0.388,2.271,0.61,3.5,0.61   C31.299,45,36,40.299,36,34.5z" class="svg-elem-13"></path>
+    <circle style="fill: rgb(123, 144, 155);" cx="32" cy="39" r="2" class="svg-elem-14"></circle>
+    <path style="fill: rgb(123, 144, 155);" d="M36,33v-6c0-2.209-1.791-4-4-4h0c-2.209,0-4,1.791-4,4v6h-4v-6c0-4.418,3.582-8,8-8h0   c4.418,0,8,3.582,8,8v6H36z" class="svg-elem-15"></path>
+    <circle style="fill: rgb(235, 182, 82);" cx="20" cy="4" r="2" class="svg-elem-16"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="28" cy="4" r="2" class="svg-elem-17"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="36" cy="8" r="2" class="svg-elem-18"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="44" cy="4" r="2" class="svg-elem-19"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="60" cy="20" r="2" class="svg-elem-20"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="60" cy="28" r="2" class="svg-elem-21"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="56" cy="36" r="2" class="svg-elem-22"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="60" cy="44" r="2" class="svg-elem-23"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="44" cy="60" r="2" class="svg-elem-24"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="36" cy="60" r="2" class="svg-elem-25"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="28" cy="56" r="2" class="svg-elem-26"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="20" cy="60" r="2" class="svg-elem-27"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="4" cy="44" r="2" class="svg-elem-28"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="4" cy="36" r="2" class="svg-elem-29"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="8" cy="28" r="2" class="svg-elem-30"></circle>
+    <circle style="fill: rgb(235, 182, 82);" cx="4" cy="20" r="2" class="svg-elem-31"></circle>
+</g>
+</svg>
