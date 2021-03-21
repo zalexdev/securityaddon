@@ -2,12 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.huntmix.secbutton">
+
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission
         android:name="android.permission.BROADCAST_SMS"
         tools:ignore="ProtectedPermissions" />
@@ -15,15 +18,19 @@
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.SecurityAddon">
-        <activity android:name="com.huntmix.secbutton.MainActivity">
+        <activity android:name=".Shortcut"></activity>
+        <activity android:name=".Cryptonic" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,31 +38,82 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huntmix.secbutton.SelectApps"
+            android:name=".SelectApps"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name" />
         <activity
-            android:name="com.huntmix.secbutton.SettingsActivity"
+            android:name=".SettingsActivity"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name" />
         <activity
-            android:name="com.huntmix.secbutton.Deleter"
+            android:name=".Deleter"
             android:exported="true"
             android:label="Delete Apps" />
         <activity
-            android:name="com.huntmix.secbutton.Decrypter"
-            android:label="Delete Apps" />        <activity
-            android:name="com.huntmix.secbutton.About"
+            android:name=".ApiCall"
+            android:exported="true"
             android:label="Delete Apps" />
+        <activity
+            android:name=".Decrypter"
+            android:label="Delete Apps" />
+        <activity
+            android:name=".About"
+            android:label="Delete Apps" />
+
         <service
-            android:name="com.huntmix.secbutton.Backgroundstarter"
+            android:name=".Backgroundstarter"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name="com.huntmix.secbutton.Backgrounddecrypt"
+            android:name=".Background"
             android:enabled="true"
             android:exported="true" />
-        <receiver android:name="com.huntmix.secbutton.SmsListener">
+        <service
+            android:name=".Api"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Backgrounddecrypt"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Crypter"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Decrypt"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".Selectnumbers"
+            android:label="Delete Apps">
+            <intent-filter>
+                <action android:name="com.huntmix.secbutton.Selectnumbers" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".DeviceAdmin"
+            android:description="@string/admindesc"
+            android:label="Security Addon Admin (SAA)"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_policies" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Autostart">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".SmsListener">
             <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

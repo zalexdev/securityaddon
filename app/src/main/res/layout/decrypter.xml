@@ -7,7 +7,6 @@
     tools:context=".Decrypter">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
@@ -19,31 +18,44 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView"
-        android:layout_width="@dimen/_130sdp"
-        android:layout_height="@dimen/_130sdp"
-        android:foregroundGravity="center"
-        android:src="@drawable/icon"
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_50sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="@dimen/_175sdp"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon" />
+
+    </RelativeLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="14dp"
         android:gravity="center"
         android:text="@string/decrypt"
-        android:textSize="@dimen/_20sdp"
 
+        android:textSize="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/rel" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/appCompatEditText"
@@ -60,6 +72,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/b"
         android:backgroundTint="@color/purple_200"
         android:outlineSpotShadowColor="@color/black"

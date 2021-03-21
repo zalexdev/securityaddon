@@ -9,9 +9,21 @@
             app:key="pass"
 
             app:title="@string/pass"
-            app:defaultValue="16symbolspassss"
+            app:defaultValue=""
             app:icon="@drawable/key"
             />
+        <SwitchPreferenceCompat
+            app:key="pin"
+            app:title="SAA"
+            app:icon="@drawable/lock"
+            app:summaryOff="@string/maxpin"
+            app:summaryOn="@string/maxpin"/>
+        <SeekBarPreference
+            android:dependency="pin"
+            android:key="pinwrong"
+            android:max="5"
+            app:min="2"
+            android:defaultValue="2" />
         <SwitchPreferenceCompat
             app:key="rootmode"
             app:title="@string/rootmode"
@@ -65,6 +77,11 @@
 
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/sms" app:icon="@drawable/sms">
+        <EditTextPreference
+            app:key="msg"
+            app:title="@string/sendsms3"
+            app:icon="@drawable/text"
+            />
         <SwitchPreferenceCompat
             app:key="sms"
             app:icon="@drawable/smsmain"
@@ -85,14 +102,18 @@
             android:dependency="sms"
             app:summaryOn="@string/numberon"
             android:summaryOff="@string/numberoff"/>
-        <EditTextPreference
-            app:key="numbers"
+        <PreferenceScreen
+
             android:dependency="private"
             app:title="@string/nums"
-            app:defaultValue="+38xxxxxxxxxx"
-            app:icon="@drawable/number"
-            />
+            app:icon="@drawable/number">
+        <intent android:action="com.huntmix.secbutton.Selectnumbers"/>
+        </PreferenceScreen>
 
     </PreferenceCategory>
+
+
+
+
 
 </PreferenceScreen>

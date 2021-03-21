@@ -16,14 +16,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
-            android:id="@+id/progress"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="@dimen/_175sdp"
             android:layout_height="@dimen/_175sdp"
             android:layout_centerInParent="true"
             android:visibility="visible" />
         <ImageView
-            android:id="@+id/image_test"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_centerInParent="true"
@@ -47,7 +45,6 @@
         app:layout_constraintTop_toBottomOf="@+id/rel" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ver"
@@ -76,7 +73,7 @@
             android:layout_height="@dimen/_30sdp"
            android:background="@drawable/settings2"
             android:onClick="opensettings"
-
+            android:id="@+id/settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="414dp" />
@@ -91,12 +88,40 @@
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:onClick="addshrt"
+            android:id="@+id/shrt"
             android:layout_marginStart="@dimen/_5sdp"
             android:background="@drawable/add" />
         <com.google.android.material.button.MaterialButton
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
+            android:onClick="opencrypt"
+            android:id="@+id/crypto"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/crypt" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:onClick="enablelock"
+            android:id="@+id/lock"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/lock" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:onClick="contact"
+            android:id="@+id/sms"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/chat" />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:onClick="startdelete"
+            android:id="@+id/starter"
             android:layout_marginStart="@dimen/_5sdp"
             android:background="@drawable/start" />
 
@@ -111,7 +136,6 @@
 
         <LinearLayout
 
-            android:id="@+id/ll"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -120,6 +144,7 @@
                 android:layout_width="@dimen/_190sdp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_12sdp"
+                android:id="@+id/appcard"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp">
 

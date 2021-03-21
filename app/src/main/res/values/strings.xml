@@ -1,13 +1,5 @@
 <resources>
     <string name="app_name">Security addon</string>
-    <string name="desc2">With root uninstall will be silent. Without you need fastly click ok button!</string>
-    <string name="m3">Author</string>
-    <string name="desc3">Author: https://t.me/huntmix \n Github: https://github.com/huntmix/secbutton \n Support project: https://huntmix.ru/rekv.html</string>
-    <string name="rt">Root method</string>
-    <string name="author">Made by Huntmix with ❤ and opensource</string>
-    <string name="sys">System apps</string>
-    <string name="notif">"Show dialog before deleting "</string>
-    <string name="title_activity_settings" translatable="false">SettingsActivity</string>
 
     <!-- Preference Titles -->
     <string name="Header">General</string>
@@ -15,18 +7,11 @@
     <string name="rootoff">Delete apps via dialog</string>
     <string name="rooton">Delete apps with root, silent</string>
     <string name="system">System apps</string>
-    <string name="warn">Show warning</string>
-    <string name="warnoff">Starting delete silently</string>
     <string name="systemon">Include system apps</string>
     <string name="systemoff">Don`t show system apps</string>
-    <string name="warning">Are you sure you want to start deleting selected apps and folders?</string>
-    <string name="y">Yes</string>
-    <string name="n">No</string>
     <string name="other">Shortcut settings</string>
     <string name="cicon">Set custom icon path</string>
     <string name="name">Custom name of shortcut</string>
-    <string name="set">Settings</string>
-    <string name="fm">File manager</string>
     <string name="clean">Clean apps</string>
     <string name="cleanoff">App will be deleted</string>
     <string name="cleanon">App data will be cleared (log out)</string>
@@ -44,27 +29,17 @@
     <string name="fakeappon">Shortcut will launch chosen app after deleting</string>
     <string name="fakeappoff">Shortcut will just starting deleting</string>
     <string name="applaunch">Which app launch(pkg)?</string>
-    <string name="autodel">Delete this app</string>
-    <string name="delon">App will be deleted after tasks</string>
-    <string name="deloff">This app won`t be deleted</string>
-    <string name="reboot">Reboot phone</string>
-    <string name="smswarn">PLEASE READ ME! You need go to the settings, find this app and ALLOW autorun option! If you won`t do it, delete via sms will NOT WORKS!!!</string>
-    <string name="about">About app</string>
     <string name="descabout">This app - opensourse project. We don`t collect any data, if you have an idea, improvement or found a bug, please open issue. Best Regards, Huntmix.</string>
     <string name="don">Donation</string>
     <string name="happy">Make author happy, give him pizza 🍕!</string>
     <string name="descabout2">Pizza - it`s a super item what makes author of this app happy! So if you like this app, you know what to do! :)</string>
-    <string name="crypt">Crypt files (AES)</string>
-    <string name="cryptoff">Selected files will be deleted</string>
-    <string name="crypton">Selected files will be crypted</string>
     <string name="pass">Password for AES</string>
     <string name="warn3">Files crypted by securitty addon</string>
     <string name="decrypt">Enter password to decrypt files!</string>
     <string name="passkey">Password</string>
     <string name="passwarn">Please set password before in settings</string>
-    <string name="notification">Started actions....</string>
     <string name="select">Select</string>
-    <string name="short1" translatable="false">Please enter valid path to .png/.jpg icon in settings!</string>
+    <string name="short1">Please enter valid path to .png/.jpg icon in settings!</string>
     <string name="error">Error</string>
     <string name="apps">Apps</string>
     <string name="apps2">Selected apps will be deleted from your device</string>
@@ -73,11 +48,37 @@
     <string name="cryptf">Crypt</string>
     <string name="cryptf2">Selected folders will be crypted with AES-256!</string>
     <string name="launch">Launch</string>
-    <string name="ver">Version: 4.0</string>
+    <string name="ver">Version: 5.0</string>
     <string name="delete">Are you sure? All selected apps, files and folders will be deleted\\crypted! Think twice!</string>
     <string name="warn1">Warning!</string>
     <string name="cancel">Cancel</string>
     <string name="decrypter">"Are you sure? You entered password: "</string>
     <string name="passnull">Please enter password!</string>
     <string name="load">Loading...</string>
+    <string name="cfiles">Crypt</string>
+    <string name="cfiles2">Selected files will be crypted</string>
+    <string name="cdecrypt">Decrypt</string>
+    <string name="cdecrypt2">Selected files will be decrypted</string>
+    <string name="lowpass">Password must have 16 characters!</string>
+    <string name="ddcryptwarn">Are you sure you want start crypt/decrypt? If you entered wrong password files will be errasered! Remember password what you entered!</string>
+    <string name="enable">SAA - activated!</string>
+    <string name="trydisable">SAA won`t able to detect wrong pin entered!</string>
+    <string name="disable">SAA - disabled!</string>
+    <string name="admindesc">You need to enable it if you want monitor unlock attemps!</string>
+    <string name="maxpin">Max wrong pin attemps (2-5)</string>
+    <string name="adminwarn">You need to enable this app in device admin settings!</string>
+    <string name="enablepin">Enable SAA in settings before!</string>
+    <string name="sendsms2">Set message text before</string>
+    <string name="sendsms3">Set message text</string>
+    <string name="notif1">Please disable notification. We need it for silent work!</string>
+    <string name="smswarn">IMPORTANT! Please if you have MIUI, EMIUI or etc. Enable autorun in settings. Without it many functions won`</string>
+    <string name="tutor_settings">Here you can see setings. Root, passwords, modes etc.</string>
+    <string name="tutorial_shrt">This button adds custom shortcut to your home screen</string>
+    <string name="tutorial_lock">Here you can setup screen protection</string>
+    <string name="tutorial_sms">Here you can choose contacts for who send sms!</string>
+    <string name="tutorial_apps">Here you can add apps, files and folders. Just swipe ---></string>
+    <string name="tutorial_pass">After crypting with 16 symbols password , you can share your files anywhere safely!</string>
+    <string name="perm">Permissions warn</string>
+    <string name="perm2">We need: Storage - for crypting and decrypting files. Read and send sms for functions like: sms activation, send sos sms and etc.</string>
+    <string name="notifsettings">Notifications</string>
 </resources>
