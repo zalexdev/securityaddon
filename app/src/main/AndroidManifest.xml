@@ -6,11 +6,14 @@
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission
         android:name="android.permission.BROADCAST_SMS"
         tools:ignore="ProtectedPermissions" />
@@ -19,84 +22,52 @@
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SecurityAddon">
-        <activity android:name=".Shortcut"></activity>
-        <activity android:name=".Cryptonic" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <activity android:name="com.huntmix.secbutton.NotifSettings"></activity>
+        <activity android:name="com.huntmix.secbutton.ShortcutLaunch" />
+        <activity android:name="com.huntmix.secbutton.Disablenotif" />
+        <activity android:name="com.huntmix.secbutton.ShortcutSettings" />
+        <activity android:name="com.huntmix.secbutton.LockSettings" />
+        <activity android:name="com.huntmix.secbutton.About" />
+        <activity android:name="com.huntmix.secbutton.SosSettings" />
+        <activity android:name="com.huntmix.secbutton.Decrypter" />
+        <activity android:name="com.huntmix.secbutton.ApiCall" />
+        <activity android:name="com.huntmix.secbutton.SelectNotif" />
+        <activity android:name="com.huntmix.secbutton.Selectnumbers" />
+        <activity android:name="com.huntmix.secbutton.Selectcontacts" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <service
+            android:name="com.huntmix.secbutton.BackgroundKeeper"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.huntmix.secbutton.Api"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.huntmix.secbutton.Backgrounddecrypt"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.huntmix.secbutton.StartActions"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name="com.huntmix.secbutton.SmsActions">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SelectApps"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".SettingsActivity"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".Deleter"
-            android:exported="true"
-            android:label="Delete Apps" />
-        <activity
-            android:name=".ApiCall"
-            android:exported="true"
-            android:label="Delete Apps" />
-        <activity
-            android:name=".Decrypter"
-            android:label="Delete Apps" />
-        <activity
-            android:name=".About"
-            android:label="Delete Apps" />
-
-        <service
-            android:name=".Backgroundstarter"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Background"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Api"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Backgrounddecrypt"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Crypter"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Decrypt"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity
-            android:name=".Selectnumbers"
-            android:label="Delete Apps">
-            <intent-filter>
-                <action android:name="com.huntmix.secbutton.Selectnumbers" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
+        </receiver>
         <receiver
-            android:name=".DeviceAdmin"
+            android:name="com.huntmix.secbutton.DeviceAdmin"
             android:description="@string/admindesc"
             android:label="Security Addon Admin (SAA)"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -108,14 +79,37 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".Autostart">
+
+        <service
+            android:name="com.huntmix.secbutton.NotificationService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="com.huntmix.secbutton.SmsSettings" />
+        <activity android:name="com.huntmix.secbutton.SelectApps" />
+        <activity android:name="com.huntmix.secbutton.CryptSettings" />
+        <activity android:name="com.huntmix.secbutton.StorageSettings" />
+        <activity android:name="com.huntmix.secbutton.AppSettings" />
+        <activity android:name="com.huntmix.secbutton.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.huntmix.secbutton.Cryptonic" android:icon="@drawable/crypt" android:label="Crypter" android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.huntmix.secbutton.Autostart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".SmsListener">
-            <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
     </application>

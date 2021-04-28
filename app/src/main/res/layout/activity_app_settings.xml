@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppSettings">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_10sdp"
+
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="selectapps"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/select"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/tag"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/selected_apps_will_be_deleted_from_your_phone"
+                android:textColor="@color/preblack"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:src="@drawable/next"
+                app:tint="#958F8F" />
+        </LinearLayout>
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/root_mode"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/use_root_for_silent_delete"
+            android:textColor="#5A5050"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+    <com.github.angads25.toggle.widget.LabeledSwitch
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        app:on="false"
+        app:textOn="ON"
+        app:textOff="OFF"
+        app:colorOff="#FFFFFF"
+        app:colorOn="#304FFE"
+        app:colorBorder="#89898A"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/system_apps"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/show_system_apps_in_the_list"
+                android:textColor="#5A5050"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+        <com.github.angads25.toggle.widget.LabeledSwitch
+            android:id="@+id/sysapp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            app:on="false"
+            app:textOn="ON"
+            app:textOff="OFF"
+            app:colorOff="#FFFFFF"
+            app:colorOn="#304FFE"
+            app:colorBorder="#89898A"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/clear_apps"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/clear_apps_data_instead_of_delete"
+                android:textColor="#5A5050"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+        <com.github.angads25.toggle.widget.LabeledSwitch
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            app:on="false"
+            app:textOn="ON"
+            app:textOff="OFF"
+            app:colorOff="#FFFFFF"
+            app:colorOn="#304FFE"
+            app:colorBorder="#89898A"/>
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

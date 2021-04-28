@@ -1,11 +1,8 @@
 package com.huntmix.secbutton;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,8 +37,6 @@ public class SelectApps extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState){
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select);
         tinydb = new TinyDB(this);
@@ -65,19 +60,5 @@ public class SelectApps extends AppCompatActivity{
     }
 
 
-    public void openmain() {
 
-        Intent intent = new Intent(SelectApps.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    public void deletelist(View view){
-        tinydb.putString("list","");
-        Toast.makeText(SelectApps.this, "List was cleared!",
-                Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(SelectApps.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-
-    }
 }

@@ -10,11 +10,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.Button;
+import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import java.io.File;
@@ -25,6 +25,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -37,17 +38,24 @@ public class Api extends Service {
     public String pass;
     public List<String> list;
     public String mode;
+    public String msg;
+    public Boolean clean;
+    public Boolean root;
     public Handler mHandler;
     @Override
     public void onCreate() {
         super.onCreate();
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //GETTING OPTIONS
         list= intent.getStringArrayListExtra("path");
         pass = intent.getStringExtra("pass");
         mode = intent.getStringExtra("mode");
+        msg = intent.getStringExtra("msg");
+        clean = intent.getBooleanExtra("clean",false);
+        root = intent.getBooleanExtra("approot",false);
         mHandler=new Handler();
         createNotificationChannel();
         Intent notificationIntent = new Intent(this, MainActivity.class);
@@ -55,7 +63,7 @@ public class Api extends Service {
                 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Api working...")
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(1, notification);
@@ -87,6 +95,16 @@ public class Api extends Service {
                 } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException e) {
                 }
             }
+        }
+        if (mode.equals("delapps")){
+            try {
+                deleteapps(clean,root,list);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (mode.equals("sendsms")){
+                sendsms(list,msg);
         }
         return START_NOT_STICKY;
     }
@@ -181,7 +199,7 @@ public class Api extends Service {
                         decrypt(child.getAbsolutePath(),pass);
                         File del = new File(child.getAbsolutePath());
                         del.delete();} }else{
-                    decrypt(path+".crypted",pass);
+                    decrypt(path,pass);
                     File del = new File(path);
                     del.delete();}}}}
     public void decrypt(String path1,String pass) throws IOException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
@@ -200,4 +218,44 @@ public class Api extends Service {
         fos.close();
         cis.close();
     }
+   //Sending sms
+   @RequiresApi(api = Build.VERSION_CODES.N)
+   public void sendsms(List<String> nsms, String message) {
+       List<String> nsms2 = nsms.stream()
+               .distinct()
+               .collect(Collectors.toList());
+       if (nsms.size()>0){
+           for(int i = 0;i <nsms2.size();i++){
+               String phoneNumber = nsms2.get(i);
+               SmsManager smsManager = SmsManager.getDefault();
+               ArrayList<String> parts = smsManager.divideMessage(message);
+               smsManager.sendMultipartTextMessage(phoneNumber, null, parts, null, null);}}
+   }
+   //Deleting apps
+   public void deleteapps(Boolean clean, Boolean rm, List<String> list) throws IOException {
+       //clean or delete
+       if (clean == Boolean.TRUE){
+           for (int v = 0; v < list.size(); v++) {
+               //clean via command
+               Runtime.getRuntime().exec("su -c pm clear --user 0 " + list.get(v));
+           }
+       }else{
+//check root or default method
+           if (rm == Boolean.TRUE) {
+               //if root method
+               for (int v = 0; v < list.size(); v++) {
+                   if (list.get(v) !="com.huntmix.secbutton"){
+                       Runtime.getRuntime().exec("su -c pm uninstall --user 0 " + list.get(v));
+                   }
+//if not root method
+               }} else {
+               for (int v = 0; v < list.size(); v++) {
+                   if (list.get(v) !="com.huntmix.secbutton"){
+                       Intent intent = new Intent(Intent.ACTION_DELETE);
+                       intent.setData(Uri.parse("package:" + list.get(v)));
+                       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       startActivity(intent);
+                   }}
+           }
+       }}
 }

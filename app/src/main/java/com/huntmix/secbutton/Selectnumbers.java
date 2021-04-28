@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
 
 import com.wafflecopter.multicontactpicker.ContactResult;
@@ -19,9 +16,6 @@ import com.wafflecopter.multicontactpicker.RxContacts.PhoneNumber;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.isabsent.filepicker.SimpleFilePickerDialog.CompositeMode.FILE_AND_FOLDER_MULTI_CHOICE;
-import static com.github.isabsent.filepicker.SimpleFilePickerDialog.CompositeMode.FOLDER_ONLY_MULTI_CHOICE;
-
 public class Selectnumbers extends Activity {
     private static final int CONTACT_PICKER_REQUEST = 991;
     public TinyDB tinydb;
@@ -30,19 +24,19 @@ public class Selectnumbers extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.null1);
+        setContentView(R.layout.contacts);
         tinydb = new TinyDB(this);
     contacts();
     }
     public void contacts(){
-        new MultiContactPicker.Builder(Selectnumbers.this)
+        new MultiContactPicker.Builder(com.huntmix.secbutton.Selectnumbers.this)
                 .theme(R.style.MultiContactPicker_Azure)
                 .hideScrollbar(false)
                 .showTrack(true)
                 .searchIconColor(Color.WHITE)
                 .setChoiceMode(MultiContactPicker.CHOICE_MODE_MULTIPLE)
-                .handleColor(ContextCompat.getColor(Selectnumbers.this, R.color.colorPrimary))
-                .bubbleColor(ContextCompat.getColor(Selectnumbers.this, R.color.colorPrimary))
+                .handleColor(ContextCompat.getColor(com.huntmix.secbutton.Selectnumbers.this, R.color.colorPrimary))
+                .bubbleColor(ContextCompat.getColor(com.huntmix.secbutton.Selectnumbers.this, R.color.colorPrimary))
                 .bubbleTextColor(Color.WHITE)
                 .setTitleText("Select Contacts")
                 .setLoadingType(MultiContactPicker.LOAD_SYNC)
@@ -63,7 +57,7 @@ public class Selectnumbers extends Activity {
                         List<PhoneNumber> num = results.get(i).getPhoneNumbers();
                         for (int i2 = 0;i2<num.size();i2++){
                             nums.add(num.get(i2).getNumber());
-                            tinydb.putListString("numbers",nums);
+                            tinydb.putListString("list4",nums);
                         }}
                 }
             } else if(resultCode == RESULT_CANCELED){

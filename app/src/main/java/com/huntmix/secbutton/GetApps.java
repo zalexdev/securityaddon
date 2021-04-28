@@ -28,11 +28,11 @@ public class GetApps {
     public ArrayList<GetInfo> getApps() {
         tinydb = new TinyDB(justcontext);
 
-        rm = tinydb.getBoolean("rootmode");
+        rm = tinydb.getBoolean("rootapps");
         if (rm == Boolean.FALSE){
-            tinydb.putBoolean("sys",false);
+            tinydb.putBoolean("sysapp",false);
         }
-        sys = tinydb.getBoolean("sys");
+        sys = tinydb.getBoolean("sysapp");
         if (sys == Boolean.FALSE){
         loadApps();}
         if (sys == Boolean.TRUE){
@@ -115,7 +115,7 @@ public class GetApps {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             // Get a default icon
-            icon = ContextCompat.getDrawable(justcontext, R.drawable.ic_launcher_background);
+            icon = ContextCompat.getDrawable(justcontext, R.drawable.icon);
         }
         return icon;
     }

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,10 +25,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ;
 
     public Context justcontext;
-    public String result = "";
     private ArrayList<GetInfo> data;
     List selected = new ArrayList();
-    ;
 
     public Adapter(Context context, ArrayList<GetInfo> list) {
         justcontext = context;
@@ -59,11 +58,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(justcontext).inflate(R.layout.apkitem, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -98,12 +96,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             public void onClick(View v) {
                 TinyDB tinydb = new TinyDB(justcontext);
                 data.get(position).setSelected(!data.get(position).isSelected());
-               Adapter.this.notifyDataSetChanged();
-                String pkg = packageName;
-                if (selected.contains(pkg)){
-                    selected.remove(pkg);
+               com.huntmix.secbutton.Adapter.this.notifyDataSetChanged();
+                if (selected.contains(packageName)){
+                    selected.remove(packageName);
                 }else{
-                    selected.add(pkg);
+                    selected.add(packageName);
                 }
                 tinydb.putListString("list", (ArrayList<String>) selected);
                 Log.e("pkg", String.valueOf(selected));
@@ -123,7 +120,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         // Count the installed apps
         return data.size();
     }
-
-
-
 }

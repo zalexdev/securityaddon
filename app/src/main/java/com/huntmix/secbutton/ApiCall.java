@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class ApiCall extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("apicall","i works");
         Intent intent = new Intent(this, Api.class);
         List<String>  list= getIntent().getStringArrayListExtra("path");
         String pass = getIntent().getStringExtra("pass");

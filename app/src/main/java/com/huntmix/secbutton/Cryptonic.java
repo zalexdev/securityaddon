@@ -1,40 +1,35 @@
 package com.huntmix.secbutton;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-
 import com.github.isabsent.filepicker.SimpleFilePickerDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.datepicker.MaterialTextInputPicker;
 import com.google.android.material.textfield.TextInputEditText;
-import com.nordan.dialog.Animation;
-import com.nordan.dialog.NordanAlertDialog;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.mobiwise.materialintro.animation.MaterialIntroListener;
-import co.mobiwise.materialintro.shape.Focus;
-import co.mobiwise.materialintro.shape.FocusGravity;
-import co.mobiwise.materialintro.view.MaterialIntroView;
+import ir.androidexception.andexalertdialog.AndExAlertDialog;
+import ir.androidexception.andexalertdialog.AndExAlertDialogListener;
 
-import static com.github.isabsent.filepicker.SimpleFilePickerDialog.CompositeMode.FILE_AND_FOLDER_MULTI_CHOICE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.os.Build.VERSION.SDK_INT;
 import static com.github.isabsent.filepicker.SimpleFilePickerDialog.CompositeMode.FILE_ONLY_MULTI_CHOICE;
-import static com.github.isabsent.filepicker.SimpleFilePickerDialog.CompositeMode.FOLDER_ONLY_MULTI_CHOICE;
 
 public class Cryptonic extends AppCompatActivity implements SimpleFilePickerDialog.InteractionListenerString{
 public TinyDB tinydb;
@@ -47,11 +42,11 @@ public MaterialCardView crypt;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crypton);
         tinydb = new TinyDB(this);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
         counter();
         crypt = (MaterialCardView) findViewById(R.id.materialCardView);
-        tutor();
+        if(checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){tinydb.putBoolean("perm1",true);}
+        permnotif1();
         final String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath();
         findViewById(R.id.files).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,28 +65,65 @@ public MaterialCardView crypt;
 
 
         });
-    }
-public void tutor(){
-    new MaterialIntroView.Builder(Cryptonic.this)
-            .enableDotAnimation(false)
-            .enableIcon(false)
-            .setFocusGravity(FocusGravity.CENTER)
-            .setFocusType(Focus.MINIMUM)
-            .setDelayMillis(500)
-            .enableFadeAnimation(true)
-            .performClick(false)
-            .setInfoText(getResources().getString(R.string.tutorial_pass))
-            .setTarget(crypt)
-            .setUsageId("pass")
-            .setIdempotent(true)
-            .setListener(new MaterialIntroListener() {
-                @Override
-                public void onUserClicked(String materialIntroViewId) {
 
+        }
+    public void checkpermission(){
+        if(SDK_INT>=Build.VERSION_CODES.M){
+
+            if(checkSelfPermission(WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                if(shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE)){
+                    ActivityCompat.requestPermissions(
+                            Cryptonic.this,
+                            new String[]{WRITE_EXTERNAL_STORAGE},
+                            123
+                    );
+
+                }else {
+                    // Request permission
+                    ActivityCompat.requestPermissions(
+                            Cryptonic.this,
+                            new String[]{WRITE_EXTERNAL_STORAGE},
+                            123
+                    );
                 }
-            })
-            .show();
-}
+            }else{
+                tinydb.putBoolean("perm1",true);
+            }
+        }
+
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            try {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setData(Uri.parse(String.format("package:%s",getApplicationContext().getPackageName())));
+                startActivityForResult(intent, 2296);
+            } catch (Exception e) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivityForResult(intent, 2296);
+            }
+        } else {
+            //below android 11
+            ActivityCompat.requestPermissions(Cryptonic.this, new String[]{WRITE_EXTERNAL_STORAGE}, 123);
+        }
+
+    }
+    public void permnotif1(){
+        if (!tinydb.getBoolean("perm1")){
+            new AndExAlertDialog.Builder(this)
+                    .setTitle(getResources().getString(R.string.perm))
+                    .setImage(R.drawable.files,20)
+                    .setMessage(getResources().getString(R.string.permask1))
+                    .setPositiveBtnText(getResources().getString(R.string.grant))
+                    .setCancelableOnTouchOutside(false)
+                    .OnPositiveClicked(new AndExAlertDialogListener() {
+                        @Override
+                        public void OnClick(String input) {
+                            checkpermission();
+                        }
+                    })
+                    .build();}}
+
 
 
 
@@ -107,7 +139,7 @@ public void tutor(){
     public void onResume(){
         super.onResume();
         counter();
-        checkpermission();
+
     }
     public void crypt(View view){
         TextInputEditText mEdit   = (TextInputEditText) findViewById(R.id.gg);
@@ -169,74 +201,53 @@ public void tutor(){
         int count2 = tinydb.getListString("listdecrypt").size();
         folder.setText(getResources().getString(R.string.select)+" ("+String.valueOf(count2)+")");
     }
-    public void checkpermission(){
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                    ActivityCompat.requestPermissions(
-                            Cryptonic.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            123
-                    );
-
-                }else {
-                    // Request permission
-                    ActivityCompat.requestPermissions(
-                            Cryptonic.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            123
-                    );
-                }
-            }else {
-                // Permission already granted
-            }
-        }
-    }
     public void decryptwarn() {
-        new NordanAlertDialog.Builder(this)
-                .setAnimation(Animation.POP)
-                .isCancellable(true)
+        new AndExAlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.warn1))
                 .setMessage(getResources().getString(R.string.ddcryptwarn))
-                .setPositiveBtnText("OK")
-                .setNegativeBtnText(getResources().getString(R.string.cancel))
-                .setIcon(R.drawable.error,false)
-                .onPositiveClicked(() -> {Intent intent = new Intent(this, Decrypt.class);
-                    intent.putExtra("pass",pass);
-                    startService(intent);})
-                .onNegativeClicked(() -> {/* Do something here */})
-                .build().show();
+                .setPositiveBtnText("Ok")
+                .setCancelableOnTouchOutside(false)
+                .OnPositiveClicked(new AndExAlertDialogListener() {
+                    @Override
+                    public void OnClick(String input) {Intent intent = new Intent(Cryptonic.this, Api.class);
+                        intent.putExtra("pass",pass);
+                        intent.putExtra("mode","decrypt");
+                        intent.putStringArrayListExtra("path", (ArrayList<String>) tinydb.getListString("listdecrypt"));
+                        startService(intent);
+
+                    }
+                })
+                .build();
 
 
     }
     public void cryptwarn() {
-        new NordanAlertDialog.Builder(this)
-                .setAnimation(Animation.POP)
-                .isCancellable(true)
+        new AndExAlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.warn1))
                 .setMessage(getResources().getString(R.string.ddcryptwarn))
-                .setPositiveBtnText("OK")
-                .setNegativeBtnText(getResources().getString(R.string.cancel))
-                .setIcon(R.drawable.error,false)
-                .onPositiveClicked(() -> {Intent intent = new Intent(this, Crypter.class);
-                    intent.putExtra("pass",pass);
-                    startService(intent);})
-                .onNegativeClicked(() -> {/* Do something here */})
-                .build().show();
+                .setPositiveBtnText("Ok")
+                .setCancelableOnTouchOutside(false)
+                .OnPositiveClicked(new AndExAlertDialogListener() {
+                    @Override
+                    public void OnClick(String input) {Intent intent = new Intent(Cryptonic.this, Api.class);
+                        intent.putExtra("pass",pass);
+                        intent.putExtra("mode","crypt");
+                        intent.putStringArrayListExtra("path", (ArrayList<String>) tinydb.getListString("listcrypt"));
+                        startService(intent);
+                    }
+                })
+                .build();
+
 
 
     }
     public void passerror() {
-        new NordanAlertDialog.Builder(this)
-                .setAnimation(Animation.POP)
-                .isCancellable(true)
+        new AndExAlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.warn1))
                 .setMessage(getResources().getString(R.string.lowpass))
-                .setPositiveBtnText("OK")
-                .setIcon(R.drawable.error,false)
-                .onPositiveClicked(() -> {})
-                .build().show();
+                .setPositiveBtnText("Ok")
+                .setCancelableOnTouchOutside(false)
 
-
+                .build();
     }
 }

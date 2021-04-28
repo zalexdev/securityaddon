@@ -7,12 +7,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -28,7 +25,6 @@ import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
-import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -45,7 +41,7 @@ public class Decrypt extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         TinyDB tinydb = new TinyDB(Decrypt.this);
-        list2 = tinydb.getListString("listdecrypt");
+        list2 = tinydb.getListString("list3");
         pass = intent.getStringExtra("pass");
         mHandler=new Handler();
         createNotificationChannel();
@@ -54,7 +50,7 @@ public class Decrypt extends Service {
                 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Decrypting with password: "+pass)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(1, notification);
@@ -92,7 +88,7 @@ public class Decrypt extends Service {
             public void run(){
                 try {
                     TinyDB tinydb = new TinyDB(Decrypt.this);
-                    list2 = tinydb.getListString("listdecrypt");
+                    list2 = tinydb.getListString("list3");
                     startdecrypt(list2,pass);
                 } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | IOException e) {
                     e.printStackTrace();

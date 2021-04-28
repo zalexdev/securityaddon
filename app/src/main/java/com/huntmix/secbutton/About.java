@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -20,9 +19,7 @@ public class About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.purple_700));
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -35,12 +32,12 @@ public class About extends AppCompatActivity {
         startActivity(intent);
     }
     public void btc(View view){
-        Uri uri = Uri.parse("https://www.blockchain.com/btc/address/18qThTvXwJZNCehe3k7UjQ7LCZK3jZdmno");
+        Uri uri = Uri.parse("https://huntmix.ru");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
     public void other(View view){
-        Uri uri = Uri.parse("https://huntmix.ru/rekv.html");
+        Uri uri = Uri.parse("https://huntmix.ru/donation.html");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }

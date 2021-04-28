@@ -23,7 +23,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
@@ -52,7 +51,7 @@ public class Crypter extends Service {
                 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Decrypting with password: " + pass)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(1, notification);

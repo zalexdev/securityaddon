@@ -88,7 +88,21 @@ public class TinyDB {
         checkForNullKey(key);
         preferences.edit().putFloat(key, value).apply();
     }
+    public void putListInt(String key, ArrayList<Integer> intList) {
+        checkForNullKey(key);
+        Integer[] myIntList = intList.toArray(new Integer[intList.size()]);
+        preferences.edit().putString(key, TextUtils.join("‚‗‚", myIntList)).apply();
+    }
+    public ArrayList<Integer> getListInt(String key) {
+        String[] myList = TextUtils.split(preferences.getString(key, ""), "‚‗‚");
+        ArrayList<String> arrayToList = new ArrayList<String>(Arrays.asList(myList));
+        ArrayList<Integer> newList = new ArrayList<Integer>();
 
+        for (String item : arrayToList)
+            newList.add(Integer.parseInt(item));
+
+        return newList;
+    }
     public void putString(String key, String value) {
         checkForNullKey(key); checkForNullValue(value);
         preferences.edit().putString(key, value).apply();

@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/cfiles"
+                android:text="Crypt"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp" />
 
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/cfiles2"
+                android:text="Selected files will be crypted"
                 android:textAlignment="center"
                 android:textSize="@dimen/_12sdp" />
 
@@ -55,7 +55,7 @@ android:id="@+id/files"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:onClick="crypt"
-                android:text="@string/launch" />
+                android:text="Launch" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -90,7 +90,7 @@ android:id="@+id/files"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/cdecrypt"
+                android:text="Decrypt"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp" />
 
@@ -98,7 +98,7 @@ android:id="@+id/files"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/cdecrypt2"
+                android:text="Selected files will be decrypted"
                 android:textAlignment="center"
                 android:textSize="@dimen/_12sdp" />
 
@@ -116,7 +116,7 @@ android:id="@+id/files"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
 android:onClick="decrypt"
-                android:text="@string/launch" />
+                android:text="Lauch" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

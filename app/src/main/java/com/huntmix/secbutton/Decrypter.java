@@ -15,21 +15,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.nordan.dialog.Animation;
-import com.nordan.dialog.NordanAlertDialog;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
-
-import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
+import ir.androidexception.andexalertdialog.AndExAlertDialog;
+import ir.androidexception.andexalertdialog.AndExAlertDialogListener;
 
 public class Decrypter extends AppCompatActivity {
     public String pass;
@@ -41,8 +28,7 @@ public class Decrypter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.decrypter);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -61,41 +47,43 @@ public class Decrypter extends AppCompatActivity {
                     {
                      pass = mEdit.getText().toString();
                      Log.e("pass",pass);
-                     if (pass.length() <1){
-                         passnull();
-                     }else{
+                     if (pass.length() == 16){
                          passwarn();
+                     }else{
+                         passnull();
                      }
 
                     }
                 });
     }
     public void passwarn(){
-        new NordanAlertDialog.Builder(this)
-                .setAnimation(Animation.POP)
-                .isCancellable(false)
+        new AndExAlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.warn1))
-                .setMessage(getResources().getString(R.string.decrypter)+pass)
-                .setPositiveBtnText("OK")
-                .setNegativeBtnText(getResources().getString(R.string.cancel))
-                .setIcon(R.drawable.warn,false)
-                .onPositiveClicked(() -> {Intent intent = new Intent(Decrypter.this, Backgrounddecrypt.class);
-                    intent.putExtra("pass",pass);
-                    startService(intent);
-                    finish();})
-                .build().show();
+                .setMessage("Are you sure?"+pass)
+                .setPositiveBtnText("Ok")
+                .setImage(R.drawable.warning,20)
+                .setCancelableOnTouchOutside(false)
+                .OnPositiveClicked(new AndExAlertDialogListener() {
+                    @Override
+                    public void OnClick(String input) {Intent intent = new Intent(Decrypter.this, Backgrounddecrypt.class);
+                        intent.putExtra("pass",pass);
+                        startService(intent);
+                        finish();
+
+                    }
+                })
+                .build();
+
     }
     public void passnull(){
-        new NordanAlertDialog.Builder(this)
-                .setAnimation(Animation.POP)
-                .isCancellable(false)
+        new AndExAlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.warn1))
-                .setMessage(getResources().getString(R.string.passnull))
-                .setPositiveBtnText("OK")
-                .setIcon(R.drawable.error,false)
-                .onPositiveClicked(() -> {})
+                .setMessage("Enter 16 symbol password!")
+                .setPositiveBtnText("Ok")
+                .setImage(R.drawable.close,20)
+                .setCancelableOnTouchOutside(false)
+                .build();
 
-                .build().show();
     }
 
 }

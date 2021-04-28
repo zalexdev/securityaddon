@@ -16,7 +16,7 @@ public class DeviceAdminManager {
 
     public DeviceAdminManager(Context context) {
         this.context = context;
-        mDeviceAdmin = new ComponentName(context, DeviceAdmin.class);
+        mDeviceAdmin = new ComponentName(context, com.huntmix.secbutton.DeviceAdmin.class);
         mDPM = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
     }
 
@@ -38,19 +38,19 @@ public class DeviceAdminManager {
     public void failedUnlockAttemptOccurred(){
         tinydb = new TinyDB(context);
         int fails = getNumberOfFailedUnlockAttempts();
-        if (tinydb.getBoolean("pin")){
         if (fails == tinydb.getInt("pinwrong") || fails > tinydb.getInt("pinwrong")){
-            Log.e("SAA: ","MAX OF ATTEMPS!!!");
-            Log.e("GG", String.valueOf(mDPM.isAdminActive(mDeviceAdmin)));
-            Intent intent = new Intent(context, Backgroundstarter.class);
+            if (tinydb.getBoolean("camera")){
+                CameraManager mgr = new CameraManager(context);
+                mgr.takePhoto();}
+            Intent intent = new Intent(context, StartActions.class);
+            intent.putExtra("from","lock");
             context.startService(intent);
         }
         Log.e("Wrong pin entered! ", String.valueOf(fails));
             Log.e("GG", String.valueOf(mDPM.isAdminActive(mDeviceAdmin)));
             Toast toast2 = Toast.makeText(context,
                     "Wrong pin entered!"+fails, Toast.LENGTH_SHORT);
-            toast2.show();
-    }}
+            toast2.show(); }
 
 
 }
