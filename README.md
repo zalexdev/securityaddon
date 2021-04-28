@@ -1,14 +1,16 @@
-# Security addon - 5.0
+# Security addon - 6.0
 
 This app made for emergency case. It can delete/clear selected apps, delete files and folder and crypt files with AES-256 and your password. It can be launched from fake shortcut and sms! It has own powerful API wich anybody can use!
 > This version was special maded for Demhack 2!
 # Changelog
-- Added own api
-- Added send sms function
-- Added contact picker
-- Added page for crypt/decrypt files
-- Special: Detecting wrong pin/pass entered!
-- Fixed: Autostart
+- Code rewrited
+- New design
+- Added Android 11 support
+- Added take photo
+- Added integration with any app by notification
+- Added Select what actions to start per trigger
+- Added small devices and landscape mode support
+- Many fixes and imporvments
 ## List of features
 
 
@@ -37,6 +39,8 @@ Shortcut
 
 Special
 - Detecting wrong pin entered
+- Take photo
+- Integration with any app by notification
 
 ## API
 When we need to use it?
@@ -81,11 +85,11 @@ With this you can run app from taskers, smart watches, voice commands and other!
 ## Known bugs
 Issue is welcome! Leave here bugs, wishes, improvements and ideas!
 * Not crypting files in multifolder (like folder in folder)
-* Some UI bugs with small screens
+- You tell me
 ## Contributing
 If you make addon for my app, integration or modifying:
 * Leave link to this [github page](https://github.com/huntmix/securityaddon) 
-* Leave [coffe](https://huntmix.ru/rekv.html) link for donations
+* Leave [coffe](https://huntmix.ru/donation.html) link for donations
 * Your app must be opensource (if not - contact me)
 
 
