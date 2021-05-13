@@ -1,4 +1,4 @@
-# Security addon - 6.0
+# Security addon - 6.1
 
 This app made for emergency case. It can delete/clear selected apps, delete files and folder and crypt files with AES-256 and your password. It can be launched from fake shortcut and sms! It has own powerful API wich anybody can use!
 > This version was special maded for Demhack 2!
