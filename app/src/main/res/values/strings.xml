@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">Security addon</string>
+
+    <!-- Preference Titles -->
+    <string name="key">Key word, message or number</string>
+    <string name="descabout">This app - opensourse project. We don`t collect any data, if you have an idea, improvement or found a bug, please open issue. Best Regards, Huntmix.</string>
+    <string name="don">Donation</string>
+    <string name="happy">Make author happy, give him pizza 🍕!</string>
+    <string name="descabout2">Pizza - it`s a super item what makes author of this app happy! So if you like this app, you know what to do! :)</string>
+    <string name="short1">Please enter valid path to .png/.jpg icon in settings!</string>
+    <string name="error">Error</string>
+    <string name="apps">Apps</string>
+    <string name="files">Storage</string>
+    <string name="cryptf">Crypt</string>
+    <string name="warn1">Warning!</string>
+    <string name="enable">SAA - activated!</string>
+    <string name="trydisable">SAA won`t able to detect wrong pin entered!</string>
+    <string name="disable">SAA - disabled!</string>
+    <string name="admindesc">You need to enable it if you want monitor unlock attemps!</string>
+    <string name="adminwarn">You need to enable this app in device admin settings!</string>
+    <string name="enablepin">Max of wrong pin entered</string>
+    <string name="sendsms2">Set message text before</string>
+    <string name="perm">Permission</string>
+    <string name="permask1">We need storage permission for deleting and crypting files!</string>
+    <string name="permask2">We need sms permission for detecting key word!</string>
+    <string name="permask3">We need read contacts permission what you can choose contacts from list!</string>
+    <string name="permask4">We need send sms permission what app can send sos messages for selected contacts!</string>
+    <string name="grant">Grant</string>
+    <string name="author_blog">Author blog</string>
+    <string name="select">Select</string>
+    <string name="selected_apps_will_be_deleted_from_your_phone">Selected apps will be deleted from your phone</string>
+    <string name="root_mode">Delete without confirm</string>
+    <string name="use_root_for_silent_delete">Root needed</string>
+    <string name="system_apps">System apps</string>
+    <string name="show_system_apps_in_the_list">Show system apps in the list (Root needed)</string>
+    <string name="clear_apps_data_instead_of_delete">Clear apps data instead of delete (Root needed)</string>
+    <string name="clear_apps">Clear apps data</string>
+    <string name="selected_files_and_folders_will_be_deleted">Selected files and folders will be deleted</string>
+    <string name="set_password">Set password</string>
+    <string name="set_password_for_crypting_files_remember_it">Set password for crypting files. Remember it!</string>
+    <string name="setup">Setup</string>
+    <string name="you_need_make_this_app_device_administrator_first">You need make this app device administrator first</string>
+    <string name="how_much_times_you_need_enter_wrong_pin_to_launch_actions">How much times you need enter wrong pin to launch actions</string>
+    <string name="take_photo">Take photo</string>
+    <string name="take_a_pic_who_is_so_immortal_to_take_your_phone">Take a pic who is so immortal to take your phone))</string>
+    <string name="set_actions">Set actions</string>
+    <string name="what_actions_will_be_launched_nif_sms_with_keyword_recived">What actions will be launched if sms with keyword recived</string>
+    <string name="sos_message">SOS message</string>
+    <string name="sms">SMS</string>
+    <string name="lock_screen">Lock screen</string>
+    <string name="shortcut">Shortcut</string>
+    <string name="integration_beta">Integration</string>
+    <string name="about">About</string>
+    <string name="actions">Actions</string>
+    <string name="triggers">Triggers</string>
+    <string name="other">Other</string>
+    <string name="lowpass">Password must have 16 characters!</string>
+    <string name="set_keyword">Set keyword</string>
+    <string name="codeword">You can set one word or phrase. Register important</string>
+    <string name="detect_notification_only_from_selected_apps">Detect notification only from selected apps</string>
+    <string name="if_sms_recived">What actions will be launched if sms with keyword recived</string>
+    <string name="ddcryptwarn">Are you sure you want start crypt/decrypt? If you entered wrong password files will be errasered! Remember password what you entered!</string>
+    <string name="select_apps">Select apps</string>
+    <string name="select_icon">Select icon</string>
+    <string name="select_icon_of_shortcut">Select icon of shortcut</string>
+
+    <string name="set_shortcut_label">Set shortcut label</string>
+    <string name="open_app">Open app</string>
+    <string name="app_will_be_opened">App will be opened</string>
+
+    <string name="launch_actions">What actions will be launched</string>
+    <string name="add_shortcut_to_home_screen">Add shortcut to home screen</string>
+
+    <string name="you_can_set_one_word_or_phrase_register_important">You can set one word or phrase. Register important</string>
+    <string name="private_mode">Private mode</string>
+    <string name="sms_only_from_selected_contacts_will_be_checked_for_keyword">Sms only from selected contacts will be checked for keyword</string>
+    <string name="select_from_your_contacts_book">Select from your contacts book</string>
+    <string name="keyword_recived">What actions will be launched if sms with keyword recived</string>
+
+    <string name="set_text">Set text</string>
+    <string name="seted_text_will_be_sended_for_selected_contacts">Seted text will be sended for selected contacts</string>
+    <string name="select_contacts">Select contacts</string>
+    <string name="for_these_people_will_be_sended_sms_with_nseted_text">For these people will be sended sms with seted text</string>
+
+    <string name="use_root_for_deleting">Use root for deleting</string>
+    <string name="donate">Donate</string>
+    <string name="encodedata">Crypt data</string>
+    <string name="password">Password</string>
+    <string name="setpassword">Please. set 16 symbol password</string>
+    <string name="autorun">Please disable any battery optimisation and for miui users: enable autorun!</string>
+    <string name="settings">Settings</string>
+    <string name="about_app">About App</string>
+    <string name="decrypt">Decrypt</string>
+    <string name="cstcrypt">Easy crypt and decrypt your files with custom 16 character password</string>
+</resources>
